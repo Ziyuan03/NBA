@@ -20,16 +20,16 @@ public class jRosterMenuProceed extends javax.swing.JFrame {
     
     public jRosterMenuProceed(btnPressedStored btnStored, BtnInjuryOrRoster btnInjuryRoster) {           
         initComponents();
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\nbaLogo.png", nbaLogo);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\basketballCourt.png", icon);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\nbaLogo.png", nbaLogo);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\basketballCourt.png", icon);
         this.btnStored = btnStored;     
         this.btnInjuryRoster = btnInjuryRoster;
     }   
     
     public jRosterMenuProceed() {           
         initComponents();
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\nbaLogo.png", nbaLogo);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\basketballCourt.png", icon);    
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\nbaLogo.png", nbaLogo);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\basketballCourt.png", icon);    
     }
     
     public void setImageMethod(String imagePath, JLabel labelName) {

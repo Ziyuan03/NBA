@@ -75,7 +75,7 @@ public class InjuryPlayerMainPage extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 51, 0));
 
         jButton2.setBackground(new java.awt.Color(255, 204, 204));
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA_GManager\\NBA\\src\\icons\\home (2).png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\home (2).png")); // NOI18N
         jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,7 +145,7 @@ public class InjuryPlayerMainPage extends javax.swing.JFrame {
         jPanel7.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 760));
 
         view.setBackground(new java.awt.Color(255, 255, 255));
-        view.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA_GManager\\NBA\\src\\icons\\eyes (1).png")); // NOI18N
+        view.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\eyes (1).png")); // NOI18N
         view.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewActionPerformed(evt);
@@ -190,7 +190,7 @@ public class InjuryPlayerMainPage extends javax.swing.JFrame {
         jPanel7.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 180, 210));
 
         delete.setBackground(new java.awt.Color(255, 255, 255));
-        delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA_GManager\\NBA\\src\\icons\\8673507_ic_fluent_person_delete_filled_icon (1).png")); // NOI18N
+        delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\8673507_ic_fluent_person_delete_filled_icon (1).png")); // NOI18N
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteActionPerformed(evt);
@@ -236,7 +236,7 @@ public class InjuryPlayerMainPage extends javax.swing.JFrame {
         jPanel7.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 250, 180, 210));
 
         add.setBackground(new java.awt.Color(255, 255, 255));
-        add.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA_GManager\\NBA\\src\\icons\\icons8-injury-64 (1).png")); // NOI18N
+        add.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\icons8-injury-64 (2) (1).png")); // NOI18N
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);

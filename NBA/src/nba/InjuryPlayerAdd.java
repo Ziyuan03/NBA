@@ -125,14 +125,14 @@ public class InjuryPlayerAdd extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 51, 0));
         jPanel2.setPreferredSize(new java.awt.Dimension(180, 760));
 
-        back.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA_GManager\\NBA\\src\\icons\\home (2).png")); // NOI18N
+        back.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\home (2).png")); // NOI18N
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backActionPerformed(evt);
             }
         });
 
-        activeRoster.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA_GManager\\NBA\\src\\icons\\icons8-basketball-48_1.png")); // NOI18N
+        activeRoster.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\icons8-basketball-48_1.png")); // NOI18N
         activeRoster.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 activeRosterActionPerformed(evt);
@@ -143,7 +143,7 @@ public class InjuryPlayerAdd extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Active Player Roster");
 
-        view.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA_GManager\\NBA\\src\\icons\\eyes (1).png")); // NOI18N
+        view.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\eyes (1).png")); // NOI18N
         view.setPreferredSize(new java.awt.Dimension(81, 57));
         view.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,7 +155,7 @@ public class InjuryPlayerAdd extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("View Injury Roster");
 
-        delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA_GManager\\NBA\\src\\icons\\8673507_ic_fluent_person_delete_filled_icon (1).png")); // NOI18N
+        delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\8673507_ic_fluent_person_delete_filled_icon (1).png")); // NOI18N
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteActionPerformed(evt);
@@ -204,7 +204,7 @@ public class InjuryPlayerAdd extends javax.swing.JFrame {
                 .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addContainerGap(269, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 760));
@@ -252,6 +252,7 @@ public class InjuryPlayerAdd extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 570, -1, -1));
         jPanel1.add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 570, 100, 30));
 
+        Refresh.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\8665833_rotate_refresh_icon (1).png")); // NOI18N
         Refresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RefreshActionPerformed(evt);

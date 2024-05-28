@@ -38,12 +38,12 @@ public class jRosterMenu extends javax.swing.JFrame {
     }
     
     private void setImage() {
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\nbaLogo.png", nbaLogo);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\basketball.png", labelBasketball);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\playerList.png", viewPlayerIcon);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\addPlayer.png", addPlayerIcon);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\removePlayer.png", removePlayerIcon);     
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\basketballTournament.png", deco);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\nbaLogo.png", nbaLogo);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\basketball.png", labelBasketball);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\playerList.png", viewPlayerIcon);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\addPlayer.png", addPlayerIcon);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\removePlayer.png", removePlayerIcon);     
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\basketballTournament.png", deco);
     }
     
     public void setImageMethod(String imagePath, JLabel labelName) {

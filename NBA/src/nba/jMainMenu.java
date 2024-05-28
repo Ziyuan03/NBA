@@ -56,16 +56,16 @@ public class jMainMenu extends javax.swing.JFrame {
     }
 
     private void setImage() {
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\nbaLogo.png", nbaLogo);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\backgroundMichaelJordan.png", backgroundViewRoster);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\backgroundGameSchedule.png", backgroundGameSchedule);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\backgroundInjuryPlayer.png", backgroundInjuryPlayers);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\backgroundRanking.png", backgroundRanking);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\backgroundDynamicSearch.png", backgroundDynamicSearch);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\backgroundContract.png", backgroundContract);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\backgroundBasketballCourt.jpg", backgroundBasketballCourt);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\iconManager.png", iconManager);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\iconLogOut.png", iconLogOut);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\nbaLogo.png", nbaLogo);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\backgroundMichaelJordan.png", backgroundViewRoster);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\backgroundGameSchedule.png", backgroundGameSchedule);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\backgroundInjuryPlayer.png", backgroundInjuryPlayers);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\backgroundRanking.png", backgroundRanking);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\backgroundDynamicSearch.png", backgroundDynamicSearch);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\backgroundContract.png", backgroundContract);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\backgroundBasketballCourt.jpg", backgroundBasketballCourt);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconManager.png", iconManager);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconLogOut.png", iconLogOut);
     }
 
     public void setImageMethod(String imagePath, JLabel labelName) {
@@ -632,10 +632,12 @@ public class jMainMenu extends javax.swing.JFrame {
 
     private void rankingPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rankingPanelMouseClicked
         dispose();
+        new ShowRanking().setVisible(true);
     }//GEN-LAST:event_rankingPanelMouseClicked
 
     private void dynamicSearchPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dynamicSearchPanelMouseClicked
         dispose();
+        new DynamicSearchingPage().setVisible(true);
     }//GEN-LAST:event_dynamicSearchPanelMouseClicked
 
     private void contractPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contractPanelMouseClicked

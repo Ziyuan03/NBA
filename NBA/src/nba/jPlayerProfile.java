@@ -126,22 +126,22 @@ public class jPlayerProfile extends javax.swing.JFrame {
     }
 
     private void setImage() {
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\nbaLogo.png", nbaLogo);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\iconPlayerProfile\\iconCandidateList.png", iconCandidateList);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\backgroundBasketballCourt.jpg", backgroundBasketballCourt);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\nbaLogo.png", nbaLogo);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconCandidateList.png", iconCandidateList);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\backgroundBasketballCourt.jpg", backgroundBasketballCourt);
 
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\iconPlayerProfile\\iconID.png", iconPlayerID);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\iconPlayerProfile\\iconAge.png", iconAge);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\iconPlayerProfile\\iconHeight.png", iconHeight);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\iconPlayerProfile\\iconWeight.png", iconWeight);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\iconPlayerProfile\\iconPosition.png", iconPosition);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\iconPlayerProfile\\iconSalary.png", iconSalary);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\iconPlayerProfile\\iconPoints.png", iconPoints);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\iconPlayerProfile\\iconSteals.png", iconSteals);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\iconPlayerProfile\\iconBlocks.png", iconBlocks);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\iconPlayerProfile\\iconAssists.png", iconAssists);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\iconPlayerProfile\\iconRebounds.png", iconRebounds);
-        setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\iconPlayerProfile\\iconInjury.png", iconInjury);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconID.png", iconPlayerID);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconAge.png", iconAge);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconHeight.png", iconHeight);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconWeight.png", iconWeight);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconPosition.png", iconPosition);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconSalary.png", iconSalary);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconPoints.png", iconPoints);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconSteals.png", iconSteals);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconBlocks.png", iconBlocks);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconAssists.png", iconAssists);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconRebounds.png", iconRebounds);
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconInjury.png", iconInjury);
     }
 
     public void setImageMethod(String imagePath, JLabel labelName) {
@@ -504,7 +504,7 @@ public class jPlayerProfile extends javax.swing.JFrame {
             currentID = rs.getString("Player_ID");
 
             String name = rs.getString("Player_Name").replace(" ", "");
-            setImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\Player_Profile\\" + name + ".png", playerProfile);
+            setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\Player_Profile\\" + name + ".png", getPlayerProfile());
 
         } catch (SQLException ex) {
             Logger.getLogger(jPlayerProfile.class.getName()).log(Level.SEVERE, null, ex);

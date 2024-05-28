@@ -53,11 +53,11 @@ public class jRemovePlayer extends javax.swing.JFrame {
     }
 
     private void setImage() {
-        setLabelImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\removePlayer2.png", icon);
-        setLabelImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\nbaLogo.png", nbaLogo1);
-        setButtonImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\allPlayers.png", btnAllPlayers);
-        setButtonImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\superstarPlayer.png", btnSuperstar);
-        setButtonImageMethod("C:\\Users\\user\\OneDrive\\Documents\\NetBeansProjects\\NBA_MAIN\\src\\icons\\nonSuperstarPlayer.png", btnNonSuperstar);
+        setLabelImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\removePlayer2.png", icon);
+        setLabelImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\nbaLogo.png", nbaLogo1);
+        setButtonImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\allPlayers.png", btnAllPlayers);
+        setButtonImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\superstarPlayer.png", btnSuperstar);
+        setButtonImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\nonSuperstarPlayer.png", btnNonSuperstar);
     }
 
     //Method set label image
