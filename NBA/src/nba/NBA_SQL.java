@@ -24,6 +24,26 @@ public class NBA_SQL {
         }
     }   
     
+    public void createTable() {
+        createConnection();
+        
+        try {
+            Statement stmt = con.createStatement();
+            stmt.execute("CREATE TABLE CANDIDATE_LISTT AS "
+                    + "SELECT ID AS Player_ID, CONCAT(First_Name, ' ', Last_Name) AS 'Player_Name',Age, Height, Weight, Position, Salary, PTS AS Points, REB AS Rebounds, AST AS Assists, STL AS Steals, BLK AS Blocks "
+                    + "FROM ALLPLAYERS INNER JOIN AVERAGESTATS "
+                    + "ON ALLPLAYERS.ID = AVERAGESTATS.PLAYER_ID;");
+            
+            stmt.close();   
+            System.out.println("Candidate List Table Added");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(NBA_SQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+
+    
     // All players 
     public void createAllPlayersTable() {
         createConnection();

@@ -462,6 +462,7 @@ public class GraphFrame extends javax.swing.JFrame {
 
     private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
         // TODO add your handling code here:
+        dispose();
         new jMainMenu().setVisible(true);
     }//GEN-LAST:event_homeActionPerformed
 

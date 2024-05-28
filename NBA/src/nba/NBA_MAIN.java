@@ -12,13 +12,13 @@ public class NBA_MAIN {
 //        }
 
         //NBA_SAN_ANTONIO ntsa = new NBA_SAN_ANTONIO();
-        
+        ns.createTable();
         ns.createConnection();
         //ns.createAllPlayersTable();
         //ns.createAverageStatsTable();
         //ns.createTriggger();
-        ns.createView();
-       ns.createSanAntonioTable();
+//        ns.createView();
+//       ns.createSanAntonioTable();
         
         //na.getAllPlayersData();
 

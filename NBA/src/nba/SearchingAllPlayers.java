@@ -227,7 +227,7 @@ public class SearchingAllPlayers extends javax.swing.JFrame {
         jLabel9.setText("Superstar");
 
         view1.setBackground(new java.awt.Color(255, 255, 255));
-        view1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\superstarPlayer.png")); // NOI18N
+        view1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\superstarPlayer.converted.png")); // NOI18N
         view1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 view1ActionPerformed(evt);
@@ -262,6 +262,7 @@ public class SearchingAllPlayers extends javax.swing.JFrame {
         jLabel13.setText("Non-Superstar");
 
         view2.setBackground(new java.awt.Color(255, 255, 255));
+        view2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\nonSuperstarPlayer .converted.png")); // NOI18N
         view2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 view2ActionPerformed(evt);
@@ -306,7 +307,7 @@ public class SearchingAllPlayers extends javax.swing.JFrame {
                         .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(184, 184, 184)
                         .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 248, Short.MAX_VALUE))))
+                        .addGap(0, 254, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

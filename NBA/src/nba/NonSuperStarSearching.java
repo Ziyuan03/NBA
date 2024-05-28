@@ -464,7 +464,7 @@ public class NonSuperStarSearching extends javax.swing.JFrame {
                 ResultSet rs = stmt.executeQuery();
                 while (rs.next()) {
                     model.addRow(new Object[]{
-                        rs.getString("First_Name")+" "+ rs.getString("Last_Name"),
+                        rs.getString("Player_Name"),
                         rs.getInt("Age"),
                         rs.getString("Height"),
                         rs.getDouble("Weight"),
