@@ -642,7 +642,7 @@ public class jMainMenu extends javax.swing.JFrame {
 
     private void contractPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contractPanelMouseClicked
         dispose();
-        //new ContractExtension().setVisible(true);
+        new ContractExtension().setVisible(true);
     }//GEN-LAST:event_contractPanelMouseClicked
 
     private void iconManagerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconManagerMouseClicked

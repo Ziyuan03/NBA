@@ -198,19 +198,29 @@ public class SearchingContract extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Contract_ID", "Contract_Name", "Contract_Status"
+                "Ranking", "Player_ID", "Player_Name", "Salary", "Points", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         jScrollPane1.setViewportView(tbPlayerList);
         if (tbPlayerList.getColumnModel().getColumnCount() > 0) {
+            tbPlayerList.getColumnModel().getColumn(0).setResizable(false);
+            tbPlayerList.getColumnModel().getColumn(1).setResizable(false);
+            tbPlayerList.getColumnModel().getColumn(2).setResizable(false);
             tbPlayerList.getColumnModel().getColumn(3).setResizable(false);
         }
 
@@ -329,7 +339,7 @@ public class SearchingContract extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         JFrame frame = new JFrame("Position Check"); // search button
-        String sql1 = "SELECT * FROM contract WHERE contract_id=?";
+        String sql1 = "SELECT * FROM contract WHERE Player_ID=?";
 
         try {
             DefaultTableModel model = (DefaultTableModel) tbPlayerList.getModel();
@@ -360,10 +370,12 @@ public class SearchingContract extends javax.swing.JFrame {
                 ResultSet rs = stmt.executeQuery();
                 while (rs.next()) {
                     model.addRow(new Object[]{
-                        rs.getInt("id"),
-                        rs.getString("contract_id"),
-                        rs.getString("contract_name"),
-                        rs.getString("contract_status"),
+                        rs.getInt("ranking"),
+                        rs.getString("Player_ID"),
+                        rs.getString("Player_Name"),
+                        rs.getString("Salary"),
+                        rs.getString("Points"),
+                        rs.getString("Status"),
                     });
                 }
             }
