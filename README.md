@@ -4,7 +4,7 @@
 This launches the user interface where you can register or log in. From the main menu, you can manage player rosters, schedule games using BFS for optimal travel planning, and monitor player contracts, injuries and ranking.
 
 ## Features
-- **Player Management:** Add, remove, and categorize players as all-stars, superstar players, or non-superstar players.
+- **Player Management:** Add and remove from categorize players such as all players, superstar players, or non-superstar players.
 - **Roster Updates:** Manage active and injury rosters, updating player status as they recover or sustain injuries.
 - **Game Scheduling:** Utilize BFS to plan the shortest travel routes for upcoming games.
 - **Dynamic Search:** Efficiently search for active players, injured players, and contract details.
