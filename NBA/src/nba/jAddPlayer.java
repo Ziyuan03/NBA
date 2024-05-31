@@ -592,7 +592,6 @@ public class jAddPlayer extends javax.swing.JFrame {
         panelTitle.setBackground(new java.awt.Color(255, 255, 255));
 
         title.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 36)); // NOI18N
-        title.setForeground(new java.awt.Color(0, 0, 0));
         title.setText("Add Player");
 
         icon.setText("jLabel1");

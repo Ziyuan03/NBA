@@ -632,7 +632,7 @@ public class jMainMenu extends javax.swing.JFrame {
 
     private void rankingPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rankingPanelMouseClicked
         dispose();
-        new ShowRanking().setVisible(true);
+        new Ranking().setVisible(true);
     }//GEN-LAST:event_rankingPanelMouseClicked
 
     private void dynamicSearchPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dynamicSearchPanelMouseClicked
