@@ -53,6 +53,8 @@ public class jPlayerProfile extends javax.swing.JFrame {
             setImage();
             this.lastPage = lastPage;
             this.buttonType = buttonType;
+            System.out.println(playerName);
+            setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\Player_Profile\\" + playerName + ".png", getPlayerProfile());
 
             String team = "";
             String page = lastPage.getLastPage();
@@ -63,7 +65,7 @@ public class jPlayerProfile extends javax.swing.JFrame {
                 btnType = "All_Players";
             }
 
-            //display correct button and player profile
+            // Display correct button and player profile
             switch (page) {
                 case "View_Roster" -> {
                     team += "SAN_ANTONIO WHERE Salary ";
@@ -81,7 +83,7 @@ public class jPlayerProfile extends javax.swing.JFrame {
                     team = "Impossible";
             }
 
-            //display player profile based on button pressed before (Player Type: Superstar / Non-Superstar / All Players)
+            // Display player profile based on button pressed before (Player Type: Superstar / Non-Superstar / All Players)
             switch (btnType) {
                 case "All_Players" ->
                     team += ">= 0";
@@ -90,9 +92,9 @@ public class jPlayerProfile extends javax.swing.JFrame {
                 case "Non_Superstar_Players" ->
                     team += "= 1000";
             }
-            
-            //Additional condition for display CANDIDATE_LIST players (No display player that exist in SAN_ANTONIO)
-            if(page.equals("Add_Player")) {
+
+            // Additional condition for display CANDIDATE_LIST players (No display player that exist in SAN_ANTONIO)
+            if (page.equals("Add_Player")) {
                 team += " AND Player_ID NOT IN (SELECT Player_ID FROM SAN_ANTONIO)";
             }
 
@@ -105,31 +107,33 @@ public class jPlayerProfile extends javax.swing.JFrame {
                 if (rs.getString("Player_Name").equals(playerName)) {
                     updatePlayerProfile();
                     currentName = rs.getString("Player_Name");
-
+                    
                     playerFound = true;
                     break;
                 }
             }
 
             if (!playerFound) {
-                JOptionPane.showMessageDialog(jPlayerProfile.this, "The player you selected is not exist!", "No Player Found!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(jPlayerProfile.this, "The player you selected does not exist!", "No Player Found!", JOptionPane.ERROR_MESSAGE);
                 btnNext.setVisible(false);
                 btnPrevious.setVisible(false);
             } else {
                 btnNext.setVisible(!rs.isLast());
                 btnPrevious.setVisible(!rs.isFirst());
+                
+                
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(jPlayerProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 
     private void setImage() {
         setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\nbaLogo.png", nbaLogo);
         setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconCandidateList.png", iconCandidateList);
         setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\backgroundBasketballCourt.jpg", backgroundBasketballCourt);
-
         setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconID.png", iconPlayerID);
         setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconAge.png", iconAge);
         setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\iconPlayerProfile\\iconHeight.png", iconHeight);
@@ -145,11 +149,17 @@ public class jPlayerProfile extends javax.swing.JFrame {
     }
 
     public void setImageMethod(String imagePath, JLabel labelName) {
-        ImageIcon icon = new ImageIcon(imagePath);
-        Image img = icon.getImage();
-        Image imgScale = img.getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon = new ImageIcon(imgScale);
-        labelName.setIcon(scaledIcon);
+       try {
+           System.out.println("Hello");
+            ImageIcon icon = new ImageIcon(imagePath);
+            Image img = icon.getImage();
+            Image imgScale = img.getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon scaledIcon = new ImageIcon(imgScale);
+            labelName.setIcon(scaledIcon);
+        } catch (Exception e) {
+            System.out.println("Error loading image: " + imagePath);
+            e.printStackTrace();
+        }
     }
 
     //Create connection with database when initiate this program everytime 
@@ -386,6 +396,11 @@ public class jPlayerProfile extends javax.swing.JFrame {
         injury.setText("Healthy");
 
         currentID = rs.getString("Player_ID");  // Update currentID with the new player's ID
+        currentName = rs.getString("Player_Name"); 
+        // Set the player image
+        String name = currentName.replace(" ", "");
+        setImageMethod("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\Player_Profile\\" + name + ".png", getPlayerProfile());
+    
     }
 
     //Display if each position meet requirement
@@ -1156,6 +1171,7 @@ public class jPlayerProfile extends javax.swing.JFrame {
 
                 btnNext.setVisible(!rs.isLast());
                 btnPrevious.setVisible(!rs.isFirst());
+                
             }
 
         } catch (SQLException ex) {
@@ -1172,6 +1188,7 @@ public class jPlayerProfile extends javax.swing.JFrame {
 
                 btnNext.setVisible(!rs.isLast());
                 btnPrevious.setVisible(!rs.isFirst());
+                
             }
 
         } catch (SQLException ex) {
