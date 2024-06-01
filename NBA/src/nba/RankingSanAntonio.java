@@ -136,6 +136,7 @@ public class RankingSanAntonio extends javax.swing.JFrame {
         }
         return score;
     }
+    
     private void loadRankingsIntoTable() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);  // Clear existing data
@@ -164,6 +165,25 @@ public class RankingSanAntonio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error loading rankings from database", "Database Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    public void refreshData(){
+        try (Connection conn = DriverManager.getConnection(DATA_CON, USERNAME, PASSWORD);
+             Statement stmt = conn.createStatement()) {
+
+            // Clear the existing data in the rankings table
+            stmt.executeUpdate("DELETE FROM san_antonio_rankings");
+
+            // Recalculate and insert the latest rankings
+            calculateAndInsertRankings();
+
+            // Load the latest rankings into the table
+            loadRankingsIntoTable();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error refreshing data", "Database Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
 
     
@@ -184,6 +204,7 @@ public class RankingSanAntonio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        refresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -270,6 +291,14 @@ public class RankingSanAntonio extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 850, 440));
 
+        refresh.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ziyua\\OneDrive\\Documents\\NetBeansProjects\\NBA_GManager\\NBA\\NBA\\src\\icons\\8665833_rotate_refresh_icon (1).png")); // NOI18N
+        refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshActionPerformed(evt);
+            }
+        });
+        jPanel1.add(refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 650, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -294,6 +323,11 @@ public class RankingSanAntonio extends javax.swing.JFrame {
         dispose();
         new Ranking().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
+        // TODO add your handling code here:
+        refreshData();
+    }//GEN-LAST:event_refreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,5 +373,6 @@ public class RankingSanAntonio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton refresh;
     // End of variables declaration//GEN-END:variables
 }

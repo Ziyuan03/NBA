@@ -59,34 +59,55 @@ public class ContractExtension extends javax.swing.JFrame {
     }
     
     private void loadPlayers() {
-        try {
-            Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-            String query = "SELECT Player_ID, Player_Name, Ranking, Composite_Score FROM san_antonio_rankings ORDER BY Ranking ASC";
-            PreparedStatement pst = conn.prepareStatement(query);
-            ResultSet rs = pst.executeQuery();
+    try {
+        Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+        String query = "SELECT ar.Player_ID, ar.Player_Name, ar.Ranking, ar.Composite_Score " +
+                       "FROM allplayerranking ar " +
+                       "JOIN san_antonio_rankings sa ON ar.Player_ID = sa.Player_ID " +
+                       "ORDER BY ar.Ranking ASC";
+        PreparedStatement pst = conn.prepareStatement(query);
+        ResultSet rs = pst.executeQuery();
 
-            while (rs.next()) {
-                String id = rs.getString("Player_ID");
-                String name = rs.getString("Player_Name");
-                int ranking = rs.getInt("Ranking");
-                double score = rs.getDouble("Composite_Score");
+        while (rs.next()) {
+            String id = rs.getString("Player_ID");
+            String name = rs.getString("Player_Name");
+            int ranking = rs.getInt("Ranking");
+            double score = rs.getDouble("Composite_Score");
 
-                // Check if player already has a renewed contract
-                if (!hasRenewedContract(conn, id)) {
-                    ContractPlayer cplayer = new ContractPlayer(id, name, ranking, score);
-                    contractQueue.offer(cplayer);
-                }
+            // Check if player already has a renewed contract
+            if (!hasRenewedContract(conn, id)) {
+                ContractPlayer cplayer = new ContractPlayer(id, name, ranking, score);
+                contractQueue.offer(cplayer);
             }
-
-            rs.close();
-            pst.close();
-            conn.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error loading player data", "Error", JOptionPane.ERROR_MESSAGE);
         }
+
+        rs.close();
+        pst.close();
+        conn.close();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error loading player data", "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
+private void removePlayersFromContract(String playerId) {
+    try {
+        Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+        String deleteQuery = "DELETE FROM contract WHERE Player_ID = ?";
+        PreparedStatement pst = conn.prepareStatement(deleteQuery);
+        pst.setString(1, playerId);
+        pst.executeUpdate();
+        
+        pst.close();
+        conn.close();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error removing player from contract database", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+
 
 
     
