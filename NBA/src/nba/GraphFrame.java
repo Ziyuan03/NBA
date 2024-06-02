@@ -10,26 +10,83 @@ package nba;
  * @author hp
  */
 
-import nba.*;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.JTextArea;import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 
 public class GraphFrame extends javax.swing.JFrame {
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "root123NBA.";
+    private static final String DATA_CON = "jdbc:mysql://localhost:3306/nba";
 
     /**
      * Creates new form GraphFrame
      */
     public GraphFrame() {
         initComponents();
-
         attachButtonListener();
-
+        setupDatabase();
     }
+    
+    private void setupDatabase() {
+        createScheduleTable();
+        insertScheduleData(buildGraph());
+    }
+
+    private void createScheduleTable() {
+        String sql = """
+                CREATE TABLE IF NOT EXISTS schedule (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    team_from VARCHAR(50) NOT NULL,
+                    team_to VARCHAR(50) NOT NULL,
+                    distance INT NOT NULL
+                );
+                """;
+
+        try (Connection conn = DriverManager.getConnection(DATA_CON, USERNAME, PASSWORD);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.execute();
+            System.out.println("Schedule table has been created.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void insertScheduleData(Map<String, Map<String, Integer>> graph) {
+        String sql = """
+                INSERT INTO schedule (team_from, team_to, distance) VALUES (?, ?, ?)
+                """;
+
+        try (Connection conn = DriverManager.getConnection(DATA_CON, USERNAME, PASSWORD);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            for (String teamFrom : graph.keySet()) {
+                for (Map.Entry<String, Integer> entry : graph.get(teamFrom).entrySet()) {
+                    insertData(pstmt, teamFrom, entry.getKey(), entry.getValue());
+                }
+            }
+
+            System.out.println("Schedule data has been inserted.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void insertData(PreparedStatement pstmt, String teamFrom, String teamTo, int distance) throws SQLException {
+        pstmt.setString(1, teamFrom);
+        pstmt.setString(2, teamTo);
+        pstmt.setInt(3, distance);
+        pstmt.executeUpdate();
+    }
+
 
     private void performTSPComputation() {
         Map<String, Map<String, Integer>> graph = buildGraph();  // Prepare the graph
