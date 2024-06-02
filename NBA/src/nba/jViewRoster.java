@@ -501,7 +501,7 @@ public class jViewRoster extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         dispose();
-        
+
         String btn = btnInjuryRoster.getBtnInjuryRoster();  
         
         if(btn == null) {
@@ -513,6 +513,8 @@ public class jViewRoster extends javax.swing.JFrame {
             case "Injury_View" -> new InjuryPlayerView().setVisible(true);
             case "Injury_Add" -> new InjuryPlayerAdd().setVisible(true);
             case "Injury_Delete" -> new InjuryPlayerDelete().setVisible(true);
+            case "ContractExtension" -> new ContractExtension().setVisible(true);
+            
             default -> new jRosterMenu().setVisible(true);
         }        
     }//GEN-LAST:event_btnBackActionPerformed

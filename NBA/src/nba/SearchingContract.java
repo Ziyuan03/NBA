@@ -217,14 +217,14 @@ public class SearchingContract extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Ranking", "Player_ID", "Player_Name", "Salary", "Points", "Status"
+                "Player_ID", "Player_Name", "Ranking", "Composite_Score", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -236,12 +236,6 @@ public class SearchingContract extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tbPlayerList);
-        if (tbPlayerList.getColumnModel().getColumnCount() > 0) {
-            tbPlayerList.getColumnModel().getColumn(0).setResizable(false);
-            tbPlayerList.getColumnModel().getColumn(1).setResizable(false);
-            tbPlayerList.getColumnModel().getColumn(2).setResizable(false);
-            tbPlayerList.getColumnModel().getColumn(3).setResizable(false);
-        }
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, 760, 380));
 
@@ -340,12 +334,11 @@ public class SearchingContract extends javax.swing.JFrame {
                 ResultSet rs = stmt.executeQuery();
                 while (rs.next()) {
                     model.addRow(new Object[]{
-                        rs.getInt("ranking"),
                         rs.getString("Player_ID"),
                         rs.getString("Player_Name"),
-                        rs.getString("Salary"),
-                        rs.getString("Points"),
-                        rs.getString("Status"),
+                        rs.getInt("Ranking"),
+                        rs.getString("Composite_Score"),
+                        rs.getString("Contract"),
                     });
                 }
             }

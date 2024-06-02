@@ -150,7 +150,6 @@ public class jPlayerProfile extends javax.swing.JFrame {
 
     public void setImageMethod(String imagePath, JLabel labelName) {
        try {
-           System.out.println("Hello");
             ImageIcon icon = new ImageIcon(imagePath);
             Image img = icon.getImage();
             Image imgScale = img.getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_SMOOTH);

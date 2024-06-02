@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Ziyua
  */
 public class ContractExtension extends javax.swing.JFrame {
+    private BtnInjuryOrRoster btnInjuryRoster = new BtnInjuryOrRoster();
     private PriorityQueue<ContractPlayer> contractQueue;
     private static final String URL = "jdbc:mysql://localhost:3306/nba";
     private static final String USER = "root";
@@ -389,8 +390,11 @@ private void removePlayersFromContract(String playerId) {
 
     private void rosterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rosterActionPerformed
         // TODO add your handling code here:
-        dispose();
-        new jViewRoster().setVisible(true);
+        btnInjuryRoster.setBtnInjuryRoster("ContractExtension");
+
+        jViewRoster ar = new jViewRoster(btnInjuryRoster);
+        ar.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_rosterActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
