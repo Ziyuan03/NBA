@@ -556,8 +556,13 @@ public class jPlayerProfile extends javax.swing.JFrame {
             blocks.setText(rs.getString("Blocks"));
             assists.setText(rs.getString("Assists"));
             rebounds.setText(rs.getString("Rebounds"));
-            injury.setText(rs.getString("Injury_Status"));
-
+            
+            String page = lastPage.getLastPage();
+            switch(page) {
+                case "Add_Player" -> injury.setText("Healthy");
+                default -> injury.setText(rs.getString("Injury_Status"));
+            }
+            
             currentName = rs.getString("Player_Name");
             currentID = rs.getString("Player_ID");
 
