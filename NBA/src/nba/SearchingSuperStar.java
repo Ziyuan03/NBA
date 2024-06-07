@@ -355,99 +355,94 @@ public class SearchingSuperStar extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
 
-        JFrame frame = new JFrame("Position Check"); // search button
-        String sql2 = "SELECT * FROM candidate_list WHERE Height >= ? AND Weight <= ? AND (Position LIKE ? AND Position LIKE ?) AND SALARY=3000";
-        String sql1 = "SELECT * FROM candidate_list WHERE Height >= ? AND Weight <= ? AND Position LIKE ? AND SALARY=3000";
+        JFrame frame = new JFrame("Position Check");
+    String sql2 = "SELECT * FROM candidate_list WHERE Height >= ? AND Weight <= ? AND (Position LIKE ? OR Position LIKE ?) AND SALARY=3000";
+    String sql1 = "SELECT * FROM candidate_list WHERE Height >= ? AND Weight <= ? AND Position LIKE ? AND SALARY=3000";
 
-        try {
-            DefaultTableModel model = (DefaultTableModel) tbPlayerList.getModel();
-            model.setRowCount(0);
+    try {
+        DefaultTableModel model = (DefaultTableModel) tbPlayerList.getModel();
+        model.setRowCount(0);
 
-            String minHeightText = minheight.getText().trim();
-            String maxWeightText = maxweight.getText().trim();
+        String minHeightText = minheight.getText().trim();
+        String maxWeightText = maxweight.getText().trim();
 
-            // Check for empty input
-            if (minHeightText.isEmpty()) {
-                JOptionPane.showMessageDialog(frame.getRootPane(), "Empty Height");
-                return;
-            }
-            if (maxWeightText.isEmpty()) {
-                JOptionPane.showMessageDialog(frame.getRootPane(), "Empty Weight");
-                return;
-            }
-
-            // Parse the input values
-            Double height = Double.parseDouble(minHeightText);
-            Double weight = Double.parseDouble(maxWeightText);
-
-            // Convert height to feet and inches
-            String minHeight = convertHeightToFeetInches(height);
-            double maxWeight = weight;
-
-            // Get selected items from combo boxes
-            String pos1 = (String) position1.getSelectedItem();
-            String pos2 = (String) position2.getSelectedItem();
-
-            // Ensure combo box selections are valid
-            if (pos1 == null) {
-                JOptionPane.showMessageDialog(frame.getRootPane(), "Select a Position1");
-                return;
-            }
-            if (pos2 == null) {
-                JOptionPane.showMessageDialog(frame.getRootPane(), "Select a Position2");
-                return;
-            }
-
-            // Prepare and execute the query based on the selected positions
-            PreparedStatement stmt = null;
-            if (pos2.equals("None")) {
-                // position1 is not null and position2 is none
-                JOptionPane.showMessageDialog(frame.getRootPane(), "Find attributes : Height,>= " + minHeight + " ,Weight,<=," + maxWeight + "kg,Position,-," + pos1);
-                String position1Mapped = mapPosition(pos1);
-                stmt = con.prepareStatement(sql1);
-                stmt.setString(1, minHeight);
-                stmt.setDouble(2, maxWeight);
-                stmt.setString(3, "%" + position1Mapped + "%");
-            } else {
-                // position1 is not null and position2 is not none
-                JOptionPane.showMessageDialog(frame.getRootPane(), "Find attributes : Height,>= " + minHeight + " ,Weight,<=," + maxWeight + "kg,Position1,-," + pos1 + ",Position2,-," + pos2);
-                String position1Mapped = mapPosition(pos1);
-                String position2Mapped = mapPosition(pos2);
-                stmt = con.prepareStatement(sql2);
-                stmt.setString(1, minHeight);
-                stmt.setDouble(2, maxWeight);
-                stmt.setString(3, "%" + position1Mapped + "%");
-                stmt.setString(4, "%" + position2Mapped + "%");
-            }
-
-            // Execute the query and update the table model
-            if (stmt != null) {
-                ResultSet rs = stmt.executeQuery();
-                while (rs.next()) {
-                    model.addRow(new Object[]{
-                        rs.getString("Player_Name"),
-                        rs.getInt("Age"),
-                        rs.getString("Height"),
-                        rs.getDouble("Weight"),
-                        rs.getString("Position"),
-                        rs.getString("Salary"),
-                        rs.getDouble("Points"),
-                        rs.getDouble("Rebounds"),
-                        rs.getDouble("Assists"),
-                        rs.getDouble("Steals"),
-                        rs.getDouble("Blocks")
-                    });
-                }
-            }
-        } catch (NumberFormatException e) {
-            // Handle the exception if parsing fails
-            JOptionPane.showMessageDialog(frame.getRootPane(), "Please enter valid numbers for height and weight.");
-        } catch (SQLException ex) {
-            System.out.println("SQL Error: " + ex.getMessage());
-            ex.printStackTrace();
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex.getMessage());
+        if (minHeightText.isEmpty()) {
+            JOptionPane.showMessageDialog(frame.getRootPane(), "Empty Height");
+            return;
         }
+        if (maxWeightText.isEmpty()) {
+            JOptionPane.showMessageDialog(frame.getRootPane(), "Empty Weight");
+            return;
+        }
+
+        Double height = Double.parseDouble(minHeightText);
+        Double weight = Double.parseDouble(maxWeightText);
+
+        // Height to feet and inches conversion
+        String minHeight = convertHeightToFeetInches(height);
+        double maxWeight = weight;
+
+        String pos1 = (String) position1.getSelectedItem();
+        String pos2 = (String) position2.getSelectedItem();
+
+        if (pos1 == null) {
+            JOptionPane.showMessageDialog(frame.getRootPane(), "Select a Position1");
+            return;
+        }
+        if (pos2 == null) {
+            JOptionPane.showMessageDialog(frame.getRootPane(), "Select a Position2");
+            return;
+        }
+
+        PreparedStatement stmt = null;
+        if (pos2.equals("None")) {
+            String position1Mapped = mapPosition(pos1);
+            JOptionPane.showMessageDialog(frame.getRootPane(), "Find attributes : Height >= " + minHeight + ", Weight <= " + maxWeight + " kg, Position = " + pos1);
+            stmt = con.prepareStatement(sql1);
+            stmt.setString(1, minHeight);
+            stmt.setDouble(2, maxWeight);
+            stmt.setString(3, "%" + position1Mapped + "%");
+        } else {
+            String position1Mapped = mapPosition(pos1);
+            String position2Mapped = mapPosition(pos2);
+            JOptionPane.showMessageDialog(frame.getRootPane(), "Find attributes : Height >= " + minHeight + ", Weight <= " + maxWeight + " kg, Position1 = " + pos1 + ", Position2 = " + pos2);
+            stmt = con.prepareStatement(sql2);
+            stmt.setString(1, minHeight);
+            stmt.setDouble(2, maxWeight);
+            stmt.setString(3, "%" + position1Mapped + "%");
+            stmt.setString(4, "%" + position2Mapped + "%");
+        }
+
+        System.out.println("Executing query: " + stmt.toString());
+
+        if (stmt != null) {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                model.addRow(new Object[]{
+                    rs.getString("Player_Name"),
+                    rs.getInt("Age"),
+                    rs.getString("Height"),
+                    rs.getDouble("Weight"),
+                    rs.getString("Position"),
+                    rs.getString("Salary"),
+                    rs.getDouble("Points"),
+                    rs.getDouble("Rebounds"),
+                    rs.getDouble("Assists"),
+                    rs.getDouble("Steals"),
+                    rs.getDouble("Blocks")
+                });
+            }
+            rs.close(); // Always close the ResultSet
+            stmt.close(); // Always close the PreparedStatement
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(frame.getRootPane(), "Please enter valid numbers for height and weight.");
+    } catch (SQLException ex) {
+        System.out.println("SQL Error: " + ex.getMessage());
+        ex.printStackTrace();
+    } catch (Exception ex) {
+        System.out.println("Error: " + ex.getMessage());
+    }
     }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
