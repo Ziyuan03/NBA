@@ -10,7 +10,6 @@ package nba;
  */
 
 import java.awt.Image;
-import nba.*;
 import java.util.Map;
 import java.util.HashMap;
 import java.sql.PreparedStatement;
