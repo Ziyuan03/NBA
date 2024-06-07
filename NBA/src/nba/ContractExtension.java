@@ -132,7 +132,7 @@ private void removePlayersFromContract(String playerId) {
 
     
     private boolean hasRenewedContract(Connection conn, String playerId) throws SQLException {
-        String query = "SELECT COUNT(*) FROM contract WHERE ID = ? AND Contract_Status = 'Renewed'";
+        String query = "SELECT COUNT(*) FROM contract WHERE Player_ID = ? AND Contract = 'Renewed'";
         try (PreparedStatement pst = conn.prepareStatement(query)) {
             pst.setString(1, playerId);
             ResultSet rs = pst.executeQuery();
