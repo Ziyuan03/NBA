@@ -408,48 +408,6 @@ public class jPlayerProfile extends javax.swing.JFrame {
         }
     }
 
-//    // Method to display the next available player
-//    public void displayNextPlayer() {
-//        try {
-//            // Assuming Player_ID is an integer and auto-incremented
-//            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM CANDIDATE_LIST WHERE Player_ID > ? AND Player_ID NOT IN (SELECT Player_ID FROM SAN_ANTONIO)");
-//            pstmt.setString(1, currentID);  // Use the current player's ID to find the next one
-//            ResultSet rs1 = pstmt.executeQuery();
-//
-//            if (rs1.next()) {
-//                updatePlayerProfile(rs1);
-//            } else {
-//                JOptionPane.showMessageDialog(this, "No more candidates available.");
-//                btnAddRemove.setEnabled(false);  // Disable add button if no more candidates
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(jPlayerProfile.class.getName()).log(Level.SEVERE, null, ex);
-//            JOptionPane.showMessageDialog(this, "Error fetching next player: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-//        }
-//    }
-//
-//    // Update the player profile UI with new data
-//    private void updatePlayerProfile(ResultSet rs) throws SQLException {
-//        playerName.setText(rs.getString("Player_Name"));
-//        playerID.setText(rs.getString("Player_ID"));
-//        age.setText(rs.getString("Age"));
-//        height.setText(rs.getString("Height"));
-//        weight.setText(rs.getString("Weight"));
-//        position.setText(rs.getString("Position"));
-//        salary.setText(rs.getString("Salary"));
-//        points.setText(rs.getString("Points"));
-//        steals.setText(rs.getString("Steals"));
-//        blocks.setText(rs.getString("Blocks"));
-//        assists.setText(rs.getString("Assists"));
-//        rebounds.setText(rs.getString("Rebounds"));
-//        injury.setText("Healthy");
-//
-//        currentID = rs.getString("Player_ID");  // Update currentID with the new player's ID
-//        currentName = rs.getString("Player_Name"); 
-//        // Set the player image
-//        String name = currentName.replace(" ", "");
-//        setImageMethod("src\\icons\\Player_Profile\\" + name + ".png", getPlayerProfile());
-//    }
     //Display if each position meet requirement
     public String displayEachPosition() {
         StringBuilder sb = new StringBuilder();
