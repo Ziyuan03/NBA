@@ -327,19 +327,26 @@ public class jRemovePlayer extends javax.swing.JFrame {
             for (int i = 0; i < positionArray.length; i++) {
                 if (positionArray[i].equalsIgnoreCase(position)) {
                     if (positionNumber[i] - 1 < 2) {
-                        String[] confirmRemove = {"Remove and Replace Player", "Return to menu page"};
+                        String[] confirmRemove = {"Add Player", "Remove Player", "Return to menu page"};                       
 
                         int resultConfirmRemove = showConfirmTwoOptions(jRemovePlayer.this,
-                                "Are you sure you want to remove this player with position: '" + positionArray[i]
-                                + "'?\nYou will only left " + (positionNumber[i] - 1) + " player with this position: " + positionArray[i] + " if you remove him.",
-                                "Confirm to Remove Player?",
-                                JOptionPane.YES_NO_OPTION,
+                                "You should not remove this player with position: '" + positionArray[i]
+                                + "'?\nYou will only left " + (positionNumber[i] - 1) + " player with this position: " + positionArray[i] + " if you remove him."
+                                + "\nPlease add other player with this position if you want to remove this player!!",
+                                "Insufficient Player " + positionArray[i] + "!!!",
+                                JOptionPane.YES_NO_CANCEL_OPTION,
                                 confirmRemove);
 
                         switch (resultConfirmRemove) {
-                            case JOptionPane.YES_OPTION ->
-                                removePlayer(name);
-                            case JOptionPane.NO_OPTION ->
+                            case JOptionPane.YES_OPTION -> {
+                                dispose();
+                                new jAddPlayer().setVisible(true);
+                            }                           
+                            case JOptionPane.NO_OPTION -> {
+                                dispose();
+                                new jRemovePlayer().setVisible(true);
+                            }
+                            case JOptionPane.CANCEL_OPTION ->
                                 returnMenu();
                             default ->
                                 unknownInput();
@@ -459,6 +466,7 @@ public class jRemovePlayer extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(969, 760));
+        setPreferredSize(new java.awt.Dimension(969, 760));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelSide.setBackground(new java.awt.Color(255, 51, 0));
@@ -497,7 +505,7 @@ public class jRemovePlayer extends javax.swing.JFrame {
             .addGroup(panelSideLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(nbaLogo1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelSideLayout.setVerticalGroup(
             panelSideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -513,7 +521,7 @@ public class jRemovePlayer extends javax.swing.JFrame {
                 .addGap(174, 174, 174))
         );
 
-        getContentPane().add(panelSide, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
+        getContentPane().add(panelSide, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 760));
 
         panelCentre.setBackground(new java.awt.Color(0, 0, 153));
 
@@ -683,9 +691,8 @@ public class jRemovePlayer extends javax.swing.JFrame {
 
                                     switch (resultReselect) {
                                         case JOptionPane.YES_OPTION -> {
-                                            /////////////////////////////////////////////////////////////////////////////////////////////////
-                                            model.setRowCount(0);
-                                            textID.setText("");
+                                            dispose();
+                                            new jRemovePlayer().setVisible(true);
                                         }
                                         case JOptionPane.NO_OPTION ->
                                             returnMenu();

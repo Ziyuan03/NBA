@@ -588,7 +588,7 @@ public class jAddPlayer extends javax.swing.JFrame {
                 btnBackActionPerformed(evt);
             }
         });
-        panelCenter.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 670, 100, 40));
+        panelCenter.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 670, 100, 40));
 
         labelReady.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         labelReady.setForeground(new java.awt.Color(255, 255, 255));

@@ -410,6 +410,12 @@ public class jRosterMenu extends javax.swing.JFrame {
                            2. You can view Superstar players only in your roster.
                     
                            3. You can view Non-SUPERSTAR players only in your roster.
+                    
+                           4. You can get the pdf of your players in the roster.
+                    
+                           5. Try to click the table row to view the player profile!!
+                    
+                           6. Press the button on the left side to view respective group of players.
                     """, "Instructions Before View Players");
     }//GEN-LAST:event_btnViewPlayerActionPerformed
 
@@ -436,6 +442,10 @@ public class jRosterMenu extends javax.swing.JFrame {
                                   5. Build your roster wisely based on these conditions.
 
                                   6. You are encouraged to view the candidate list before you select player.
+                            
+                                  7. Try to click the table row to view the player profile!!
+                            
+                                  8. Press the button on the left side to view respective group of players.
                             """, "Instructions Before Add Players");
                 
             } else {
@@ -468,6 +478,10 @@ public class jRosterMenu extends javax.swing.JFrame {
 
                             5. Remove your roster's player wisely based on their performances
                                 and conditions.
+                            
+                            6. Try to click the table row to view the player profile!!
+                            
+                            7. Press the button on the left side to view respective group of players.
                      """, "Instructions Before Remove Players");
             }                
     }//GEN-LAST:event_btnRemovePlayerActionPerformed

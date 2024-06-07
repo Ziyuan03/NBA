@@ -583,19 +583,26 @@ public class jPlayerProfile extends javax.swing.JFrame {
             for (int i = 0; i < positionArray.length; i++) {
                 if (positionArray[i].equalsIgnoreCase(position)) {
                     if (positionNumber[i] - 1 < 2) {
-                        String[] confirmRemove = {"Remove and Replace Player", "Return to menu page"};
+                        String[] confirmRemove = {"Add Player", "Remove Player", "Return to menu page"};                       
 
                         int resultConfirmRemove = showConfirmTwoOptions(jPlayerProfile.this,
-                                "Are you sure you want to remove this player with position: '" + positionArray[i]
-                                + "'?\nYou will only left " + (positionNumber[i] - 1) + " player with this position: " + positionArray[i] + " if you remove him.",
-                                "Confirm to Remove Player?",
-                                JOptionPane.YES_NO_OPTION,
+                                "You should not remove this player with position: '" + positionArray[i]
+                                + "'?\nYou will only left " + (positionNumber[i] - 1) + " player with this position: " + positionArray[i] + " if you remove him."
+                                + "\nPlease add other player with this position if you want to remove this player!!",
+                                "Insufficient Player " + positionArray[i] + "!!!",
+                                JOptionPane.YES_NO_CANCEL_OPTION,
                                 confirmRemove);
 
                         switch (resultConfirmRemove) {
-                            case JOptionPane.YES_OPTION ->
-                                removePlayer(name, id);
-                            case JOptionPane.NO_OPTION ->
+                            case JOptionPane.YES_OPTION -> {
+                                dispose();
+                                new jAddPlayer().setVisible(true);
+                            }                           
+                            case JOptionPane.NO_OPTION -> {
+                                dispose();
+                                new jRemovePlayer().setVisible(true);
+                            }
+                            case JOptionPane.CANCEL_OPTION ->
                                 returnMenu();
                             default ->
                                 unknownInput();
