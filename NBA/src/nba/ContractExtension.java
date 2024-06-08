@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package nba;
-import java.awt.Image;
 import java.sql.Connection;
+import java.text.DecimalFormat;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,8 +14,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.Image;
@@ -166,66 +164,68 @@ private void removePlayersFromContract(String playerId) {
     private void showAllPlayers() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0); // Clear the table before populating it
+        DecimalFormat df = new DecimalFormat("#.##");
 
         for (ContractPlayer player : contractQueue) {
             model.addRow(new Object[]{
                 player.getId(),
                 player.getName(),
                 player.getRanking(),
-                player.getCompositeScore(),
+                df.format(player.getCompositeScore()),
                 "Pending"
             });
         }
     }
 
-    private void processContract(boolean renew) {
-        if (!contractQueue.isEmpty()) {
-            String enteredId = id.getText();
-            ContractPlayer nextPlayer = contractQueue.peek();
+   private void processContract(boolean renew) {
+    if (!contractQueue.isEmpty()) {
+        String enteredId = id.getText();
+        ContractPlayer nextPlayer = contractQueue.peek();
 
-            if (!enteredId.equals(nextPlayer.getId())) {
-                JOptionPane.showMessageDialog(this, "Error: Entered Player ID does not match the ID of the player at the front of the queue. Please enter the correct Player ID to proceed.", "Queue Rule Violation", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            ContractPlayer player = contractQueue.poll();
-            String contractStatus = renew ? "Renewed" : "Declined";
-
-            try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-                 PreparedStatement pst = conn.prepareStatement("INSERT INTO contract (Player_ID, Player_Name, Contract) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE Contract = ?")) {
-                pst.setString(1, player.getId());
-                pst.setString(2, player.getName());
-                pst.setInt(3, player.getRanking());
-                pst.setDouble(4, player.getCompositeScore());
-                pst.setString(5, contractStatus);
-                pst.setString(6, contractStatus);
-                pst.executeUpdate();
-
-                if (!renew) {
-                    // Remove player from san_antonio_rankings and san_antonio tables
-                    try (PreparedStatement deletePst = conn.prepareStatement("DELETE FROM san_antonio_rankings WHERE Player_ID = ?")) {
-                        deletePst.setString(1, player.getId());
-                        deletePst.executeUpdate();
-                    }
-                    try (PreparedStatement deletePst = conn.prepareStatement("DELETE FROM san_antonio WHERE Player_ID = ?")) {
-                        deletePst.setString(1, player.getId());
-                        deletePst.executeUpdate();
-                    }
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(this, "Error updating contract status", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-
-            if (renew) {
-                JOptionPane.showMessageDialog(this, "Renewed contract with " + player.getName());
-            } else {
-                JOptionPane.showMessageDialog(this, "Did not renew contract with " + player.getName());
-            }
-            showAllPlayers();
+        if (!enteredId.equals(nextPlayer.getId())) {
+            JOptionPane.showMessageDialog(this, "Error: Entered Player ID does not match the ID of the player at the front of the queue. Please enter the correct Player ID to proceed.", "Queue Rule Violation", JOptionPane.ERROR_MESSAGE);
+            return;
         }
+
+        ContractPlayer player = contractQueue.poll();
+        String contractStatus = renew ? "Renewed" : "Declined";
+        DecimalFormat df = new DecimalFormat("#.##");
+
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement pst = conn.prepareStatement("INSERT INTO contract (Player_ID, Player_Name, Ranking, Composite_Score, Contract) VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE Contract = ?")) {
+            pst.setString(1, player.getId());
+            pst.setString(2, player.getName());
+            pst.setInt(3, player.getRanking());
+            pst.setDouble(4, Double.parseDouble(df.format(player.getCompositeScore()))); // Format the composite score
+            pst.setString(5, contractStatus);
+            pst.setString(6, contractStatus);
+            pst.executeUpdate();
+
+            if (!renew) {
+                // Remove player from san_antonio_rankings and san_antonio tables
+                try (PreparedStatement deletePst = conn.prepareStatement("DELETE FROM san_antonio_rankings WHERE Player_ID = ?")) {
+                    deletePst.setString(1, player.getId());
+                    deletePst.executeUpdate();
+                }
+                try (PreparedStatement deletePst = conn.prepareStatement("DELETE FROM san_antonio WHERE Player_ID = ?")) {
+                    deletePst.setString(1, player.getId());
+                    deletePst.executeUpdate();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error updating contract status", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        if (renew) {
+            JOptionPane.showMessageDialog(this, "Renewed contract with " + player.getName());
+        } else {
+            JOptionPane.showMessageDialog(this, "Did not renew contract with " + player.getName());
+        }
+        showAllPlayers();
     }
-    
+}
+
     
     private double calculateCompositeScore(String position, double points, double assists, double steals, double rebounds, double blocks) {
     double score = 0.0;
