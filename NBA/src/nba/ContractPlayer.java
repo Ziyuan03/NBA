@@ -13,7 +13,6 @@ public class ContractPlayer implements Comparable<ContractPlayer> {
     private String name;
     private int ranking;
     private double compositeScore;
-    private String contractStatus;
 
     public ContractPlayer(String id, String name, int ranking, double compositeScore) {
         this.id = id;
@@ -37,35 +36,14 @@ public class ContractPlayer implements Comparable<ContractPlayer> {
     public double getCompositeScore() {
         return compositeScore;
     }
-    
-     public String getContractStatus() {
-        return contractStatus;
-    }
 
-    public void setContractStatus(String contractStatus) {
-        this.contractStatus = contractStatus;
-    }
-
-    public int compareTo(ContractPlayer other) {
-        return Integer.compare(this.ranking, other.ranking); // Higher ranking has higher priority
+    public void setRanking(int ranking) {
+        this.ranking = ranking;
     }
 
     @Override
-    public String toString() {
-        return "Player{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", ranking=" + ranking +
-                ", compositeScore=" + compositeScore +
-                '}';
+    public int compareTo(ContractPlayer other) {
+        return Integer.compare(this.ranking, other.ranking);
     }
-
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
 }
+
