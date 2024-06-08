@@ -78,26 +78,33 @@ public class ContractExtension extends javax.swing.JFrame {
         }
     }
     
-    private void loadPlayers() {
+   private void loadPlayers() {
+    List<ContractPlayer> players = new ArrayList<>();
+
     try {
         Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        String query = "SELECT ar.Player_ID, ar.Player_Name, ar.Ranking, ar.Composite_Score " +
+        String query = "SELECT ar.Player_ID, ar.Player_Name, sa.Position, sa.Points, sa.Assists, sa.Steals, sa.Rebounds, sa.Blocks " +
                        "FROM allplayerranking ar " +
-                       "JOIN san_antonio_rankings sa ON ar.Player_ID = sa.Player_ID " +
-                       "ORDER BY ar.Ranking ASC";
+                       "JOIN san_antonio_rankings sa ON ar.Player_ID = sa.Player_ID";
         PreparedStatement pst = conn.prepareStatement(query);
         ResultSet rs = pst.executeQuery();
 
         while (rs.next()) {
             String id = rs.getString("Player_ID");
             String name = rs.getString("Player_Name");
-            int ranking = rs.getInt("Ranking");
-            double score = rs.getDouble("Composite_Score");
+            String position = rs.getString("Position");
+            double points = rs.getDouble("Points");
+            double assists = rs.getDouble("Assists");
+            double steals = rs.getDouble("Steals");
+            double rebounds = rs.getDouble("Rebounds");
+            double blocks = rs.getDouble("Blocks");
+
+            double score = calculateCompositeScore(position, points, assists, steals, rebounds, blocks);
 
             // Check if player already has a renewed contract
             if (!hasRenewedContract(conn, id)) {
-                ContractPlayer cplayer = new ContractPlayer(id, name, ranking, score);
-                contractQueue.offer(cplayer);
+                ContractPlayer cplayer = new ContractPlayer(id, name, 0, score); // Ranking will be set later
+                players.add(cplayer);
             }
         }
 
@@ -109,7 +116,20 @@ public class ContractExtension extends javax.swing.JFrame {
         e.printStackTrace();
         JOptionPane.showMessageDialog(this, "Error loading player data", "Error", JOptionPane.ERROR_MESSAGE);
     }
+
+    // Sort players by composite score
+    players.sort((p1, p2) -> Double.compare(p2.getCompositeScore(), p1.getCompositeScore()));
+
+    // Assign rankings based on sorted order
+    for (int i = 0; i < players.size(); i++) {
+        ContractPlayer player = players.get(i);
+        player.setRanking(i + 1); // Ranking starts from 1
+        contractQueue.offer(player);
+    }
 }
+
+
+    
 private void removePlayersFromContract(String playerId) {
     try {
         Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -172,7 +192,7 @@ private void removePlayersFromContract(String playerId) {
             String contractStatus = renew ? "Renewed" : "Declined";
 
             try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-                 PreparedStatement pst = conn.prepareStatement("INSERT INTO contract (Player_ID, Player_Name, Ranking, Composite_Score, Contract) VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE Contract = ?")) {
+                 PreparedStatement pst = conn.prepareStatement("INSERT INTO contract (Player_ID, Player_Name, Contract) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE Contract = ?")) {
                 pst.setString(1, player.getId());
                 pst.setString(2, player.getName());
                 pst.setInt(3, player.getRanking());
@@ -205,6 +225,27 @@ private void removePlayersFromContract(String playerId) {
             showAllPlayers();
         }
     }
+    
+    
+    private double calculateCompositeScore(String position, double points, double assists, double steals, double rebounds, double blocks) {
+    double score = 0.0;
+    switch (position) {
+        case "G": // Guard
+            score = points * 0.30 + assists * 0.30 + steals * 0.20 + rebounds * 0.10 + blocks * 0.10;
+            break;
+        case "C": // Center
+            score = points * 0.20 + assists * 0.10 + steals * 0.10 + rebounds * 0.30 + blocks * 0.30;
+            break;
+        case "F": // Forward
+            score = points * 0.25 + assists * 0.20 + steals * 0.15 + rebounds * 0.25 + blocks * 0.15;
+            break;
+        default: // Default case if position is not specified
+            score = points * 0.20 + assists * 0.20 + steals * 0.20 + rebounds * 0.20 + blocks * 0.20;
+            break;
+    }
+    return score;
+}
+
     
 
     
