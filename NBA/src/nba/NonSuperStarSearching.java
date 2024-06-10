@@ -358,8 +358,8 @@ public class NonSuperStarSearching extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
 
         JFrame frame = new JFrame("Position Check"); // search button
-        String sql2 = "SELECT * FROM candidate_listt WHERE Height >= ? AND Weight <= ? AND (Position LIKE ? AND Position LIKE ?) AND SALARY=1000";
-        String sql1 = "SELECT * FROM candidate_listt WHERE Height >= ? AND Weight <= ? AND Position LIKE ? AND SALARY=1000";
+        String sql2 = "SELECT * FROM candidate_list WHERE Height >= ? AND Weight <= ? AND (Position LIKE ? AND Position LIKE ?) AND SALARY=1000";
+        String sql1 = "SELECT * FROM candidate_list WHERE Height >= ? AND Weight <= ? AND Position LIKE ? AND SALARY=1000";
 
         try {
             DefaultTableModel model = (DefaultTableModel) tbPlayerList.getModel();

@@ -248,7 +248,7 @@ public class SearchingSuperStar extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Position1 :");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 290, 77, 34));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 80, 34));
 
         position1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guard", "Center", "Forward" }));
         position1.addActionListener(new java.awt.event.ActionListener() {
@@ -261,7 +261,7 @@ public class SearchingSuperStar extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Position2 :");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(717, 290, 77, 34));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(714, 290, 80, 34));
 
         position2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guard", "Center", "Forward", "None" }));
         position2.addActionListener(new java.awt.event.ActionListener() {
@@ -294,7 +294,7 @@ public class SearchingSuperStar extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbPlayerList);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 760, 420));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 770, 420));
 
         btnSearch.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -308,7 +308,9 @@ public class SearchingSuperStar extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 979, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
