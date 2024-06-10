@@ -323,7 +323,10 @@ public class SearchingContract extends javax.swing.JFrame {
             String id = contractid.getText().trim();
             // Check for empty input
             
-
+            if (id.isEmpty()) {
+            JOptionPane.showMessageDialog(frame.getRootPane(), "Empty Contract ID. Please enter again.");
+            return;
+        }
      
 
             // Prepare and execute the query based on the selected positions

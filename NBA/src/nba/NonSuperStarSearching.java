@@ -370,11 +370,11 @@ public class NonSuperStarSearching extends javax.swing.JFrame {
 
             // Check for empty input
             if (minHeightText.isEmpty()) {
-                JOptionPane.showMessageDialog(frame.getRootPane(), "Empty Height");
+                JOptionPane.showMessageDialog(frame.getRootPane(), "Empty Height or Weight");
                 return;
             }
             if (maxWeightText.isEmpty()) {
-                JOptionPane.showMessageDialog(frame.getRootPane(), "Empty Weight");
+                JOptionPane.showMessageDialog(frame.getRootPane(), "Empty Hieght or Weight");
                 return;
             }
 

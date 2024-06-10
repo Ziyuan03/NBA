@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -39,6 +41,14 @@ public class SignUp extends javax.swing.JFrame {
         ImageIcon scaledIcon = new ImageIcon(imgScale);
         labelName.setIcon(scaledIcon);
     }
+    public boolean isValidEmail(String email) {
+    String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+    Pattern pattern = Pattern.compile(emailRegex);
+    Matcher matcher = pattern.matcher(email);
+    return matcher.matches();
+}
+    
+     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -233,45 +243,48 @@ public class SignUp extends javax.swing.JFrame {
         LoginFrame.setLocationRelativeTo(null); 
         this.dispose();
     }//GEN-LAST:event_loginActionPerformed
-
+   
     private void signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupActionPerformed
         // TODO add your handling code here:
         String fullName, email, Password, query;
-        String SUrl, SUser, SPass;
-        SUrl = "jdbc:mysql://localhost:3306/nba";
-        SUser = "root";
-        SPass = "root123NBA.";
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection(SUrl, SUser, SPass);
-            Statement st = con.createStatement();
-            if("".equals(fname.getText())){
-                JOptionPane.showMessageDialog(new JFrame(), "Full Name is require", "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }else if("".equals(emailAddress.getText())){
-                JOptionPane.showMessageDialog(new JFrame(), "Email Address is require", "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }else if("".equals(pass.getText())){
-                JOptionPane.showMessageDialog(new JFrame(), "Password is require", "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }else {
+    String SUrl, SUser, SPass;
+    SUrl = "jdbc:mysql://localhost:3306/nba";
+    SUser = "root";
+    SPass = "root123NBA.";
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(SUrl, SUser, SPass);
+        Statement st = con.createStatement();
+        if("".equals(fname.getText())){
+            JOptionPane.showMessageDialog(new JFrame(), "Full Name is required", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        } else if("".equals(emailAddress.getText())){
+            JOptionPane.showMessageDialog(new JFrame(), "Email Address is required", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        } else if(!isValidEmail(emailAddress.getText())) {  // Check for valid email format
+            JOptionPane.showMessageDialog(new JFrame(), "Invalid Email Format", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        } else if("".equals(pass.getText())){
+            JOptionPane.showMessageDialog(new JFrame(), "Password is required", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        } else {
             fullName = fname.getText(); 
             email    = emailAddress.getText();
             Password = pass.getText();
             System.out.println(Password);
-            
+
             query = "INSERT INTO login(full_name, email, password)"+
                     "VALUES('"+fullName+"', '"+email+"' , '"+Password+"')";
-            
+
             st.execute(query);
             fname.setText("");
             emailAddress.setText("");
             pass.setText("");
             showMessageDialog(null, "New account has been created successfully!");
-            }
-        }catch(Exception e){
-           System.out.println("Error!" + e.getMessage()); 
         }
+    } catch(Exception e){
+       System.out.println("Error!" + e.getMessage()); 
+    }
         
     }//GEN-LAST:event_signupActionPerformed
 

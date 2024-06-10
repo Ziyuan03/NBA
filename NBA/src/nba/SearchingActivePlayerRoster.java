@@ -266,7 +266,7 @@ public class SearchingActivePlayerRoster extends javax.swing.JFrame {
 
             // Check for empty input
             if (idd.isEmpty()) {
-                JOptionPane.showMessageDialog(frame.getRootPane(), "Empty Height");
+                JOptionPane.showMessageDialog(frame.getRootPane(), "Please enter a Player ID");
                 return;
             }
             

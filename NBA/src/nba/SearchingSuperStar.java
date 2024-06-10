@@ -358,7 +358,7 @@ public class SearchingSuperStar extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
 
         JFrame frame = new JFrame("Position Check");
-    String sql2 = "SELECT * FROM candidate_list WHERE Height >= ? AND Weight <= ? AND (Position LIKE ? OR Position LIKE ?) AND SALARY=3000";
+    String sql2 = "SELECT * FROM candidate_list WHERE Height >= ? AND Weight <= ? AND (Position LIKE ? AND Position LIKE ?) AND SALARY=3000";
     String sql1 = "SELECT * FROM candidate_list WHERE Height >= ? AND Weight <= ? AND Position LIKE ? AND SALARY=3000";
 
     try {
@@ -369,11 +369,11 @@ public class SearchingSuperStar extends javax.swing.JFrame {
         String maxWeightText = maxweight.getText().trim();
 
         if (minHeightText.isEmpty()) {
-            JOptionPane.showMessageDialog(frame.getRootPane(), "Empty Height");
+            JOptionPane.showMessageDialog(frame.getRootPane(), "Empty Height or Weight");
             return;
         }
         if (maxWeightText.isEmpty()) {
-            JOptionPane.showMessageDialog(frame.getRootPane(), "Empty Weight");
+            JOptionPane.showMessageDialog(frame.getRootPane(), "Empty Height or Weight");
             return;
         }
 
